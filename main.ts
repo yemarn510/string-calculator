@@ -1,7 +1,7 @@
 export function add(inputNumbers: string): number {
     const exactlyTwoNumbers = new RegExp(/^[0-9]+,[0-9]+$/).test(inputNumbers)
-    const oneNumber = new RegExp(/^\d$/).test(inputNumbers)
-    const oneNumberAndComma = new RegExp(/^\d,/).test(inputNumbers)
+    const exactlyOneNumber = new RegExp(/^\d$/).test(inputNumbers)
+    const exactlyOneNumberAndComma = new RegExp(/^\d,/).test(inputNumbers)
     const containNextLine = new RegExp(/^\d+[\r\n]\d+,\d/).test(inputNumbers)
     const containDelimilter = new RegExp(/\/\/[^\s][\r\n]/).test(inputNumbers)
     const containBracketDelimiter = new RegExp(/^\/\/\[.*\][\r\n]/).test(inputNumbers)
@@ -10,10 +10,10 @@ export function add(inputNumbers: string): number {
         const strArray = inputNumbers.split(',');
         return strArrayToTotal(strArray);
     }
-    else if(oneNumber){
+    else if(exactlyOneNumber){
         return +inputNumbers;
     }
-    else if(oneNumberAndComma){
+    else if(exactlyOneNumberAndComma){
         return 0;
     }
     else if(containNextLine){
